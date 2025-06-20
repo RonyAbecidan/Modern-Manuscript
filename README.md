@@ -1,3 +1,5 @@
+ ![visitors](https://visitor-badge.laobi.icu/badge?page_id=RonyAbecidan.Modern-Manuscript)
+
 # Introduction
 
 I share this template to inspire and encourage the creation of academic works that are both clear and visually appealing. Use it to bring your ideas to life and share your research with the world!
