@@ -6,9 +6,11 @@ I share this template to inspire and encourage the creation of academic works th
 
 Click on my thesis cover to get a preview of what your thesis can look like with this template:
 
-[![Cover Image](./cover.png "Link to PDF")](https://pdf2flip.forge.apps.education.fr/?p=2&m=0#https://theses.hal.science/tel-04886125v1/document)
-
-
+<p align="center">
+  <a href="https://pdf2flip.forge.apps.education.fr/?p=2&m=0#https://theses.hal.science/tel-04886125v1/document">
+    <img src="./cover.png" alt="Cover Image" style="width: 20%;" />
+  </a>
+</p>
 
 ---
 Remark: The code is not perfectly clean and I am open to any suggestions or updates that would make this template even easier to use. Feel free to contribute or propose improvements!
