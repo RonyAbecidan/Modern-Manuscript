@@ -1,0 +1,638 @@
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES
+%----------------------------------------------------------------------------------------
+
+
+\usepackage{titlesec} % Allows customization of titles
+
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+% \graphicspath{{Plots/}}
+\usepackage{lipsum} % Inserts dummy text
+
+\usepackage{tikz} % Required for drawing custom shapes
+
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{enumitem} % Customize lists
+
+\usepackage{booktabs} % Required for nicer horizontal rules in tables
+
+\usepackage{eso-pic} % Required for specifying an image background in the title page
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage[font={color=dark,bf},figurename=Fig.]{caption}
+\usepackage{mwe}
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+\contentsmargin{0cm} % Removes the default margin
+% Chapter text styling
+\titlecontents{chapter}[2cm] % Indentation
+{\addvspace{0.2cm}\Large\sffamily\bfseries \color{darkblue!}\addvspace{0.2cm}} % Spacing and font options for chapters
+{\color{darkblue!60}\contentslabel[\Large\thecontentslabel]{1cm}\color{darkblue!}} % Chapter number
+{}  
+{\color{darkblue!60}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+% Section text styling
+\titlecontents{section}[2.5cm] % Indentation
+{\large \sffamily\bfseries \color{darkblue!}\addvspace{0.2cm} } % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1cm}} % Section number
+{}
+{\sffamily\hfill\color{darkblue!}\thecontentspage} % Page number
+[]
+% Subsection text styling
+\titlecontents{subsection}[3cm] % Indentation
+{\sffamily\normalsize\addvspace{0.12cm}} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1cm}} % Subsection number
+{}
+{\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[] 
+
+% Subsection text styling
+\titlecontents{subsubsection}[3cm] % Indentation
+{\addvspace{3pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1cm}} % Subsection number
+{}
+{\sffamily\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[] 
+
+\titlecontents{figure}[2cm] % Indentation
+{\sffamily\bfseries} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1cm}} % Section number
+{}
+{\sffamily\hfill\color{darkblue}\thecontentspage} % Page number
+[]
+
+% Empêcher la table des matières de couper les entrées
+\makeatletter
+\patchcmd{\@tocline}{\hfil\hbox}{\nobreak\hfil\hbox}{}{}
+\makeatother
+
+
+
+%----------------------------------------------------------------------------------------
+%	MINI TABLE OF CONTENTS IN CHAPTER HEADS
+%----------------------------------------------------------------------------------------
+
+\titlecontents{lsection}[1em] % Indendating
+{\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+
+% Subsection text styling
+\titlecontents{lsubsection}[1em] % Indentation
+{\normalfont\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+ 
+%----------------------------------------------------------------------------------------
+%	PAGE HEADERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Required for header and footer configuration
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries \chaptername\ \thechapter.\hspace{2pt} #1}{}} % Chapter text font settings
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{2pt}#1}{}} % Section text font settings
+\fancyhf{} \fancyhead[LE,RO]{\sffamily\normalsize\thepage} % Font setting for the page number in the header
+\fancyhead[LO]{\rightmark} % Print the nearest section name on the left side of odd pages
+\fancyhead[RE]{\leftmark} % Print the current chapter name on the right side of even pages
+\renewcommand{\headrulewidth}{0.5pt} % Width of the rule under the header
+\addtolength{\headheight}{2.5pt} % Increase the spacing around the header slightly
+\renewcommand{\footrulewidth}{0pt} % Removes the rule in the footer
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrulewidth}{0pt}} % Style for when a plain pagestyle is specified
+
+% Removes the header from odd empty pages at the end of chapters
+\makeatletter
+\renewcommand{\cleardoublepage}{
+\clearpage\ifodd\c@page\else
+\hbox{}
+\vspace*{\fill}
+\thispagestyle{empty}
+\newpage
+\fi}
+
+
+
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%----------------------------------------------------------------------------------------
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+\newtheorem{notation}{Notation}[chapter]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% dedicated to boxed/framed environements %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{darkbluenumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{darkblue}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{darkblue}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{darkblue}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{darkbluenumex}% Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% Body font
+{} % Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+\newtheoremstyle{darkbluenumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% dedicated to non-boxed/non-framed environements %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{darkbluenum}% % Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{darkblue}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{darkblue}\thmname{#1}\nobreakspace\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{darkblue}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+\makeatother
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\newcounter{dummy} 
+\numberwithin{dummy}{section}
+\theoremstyle{darkbluenumbox}
+
+%define color
+% \definecolor{darkblue}{HTML}{00C7EB}
+\definecolor{darkblue}{HTML}{0096FF}
+\definecolor{eve}{HTML}{46A1F7}
+\definecolor{dark}{rgb}{0.06, 0.05, 0.03}
+\definecolor{bluebis}{HTML}{00008B}
+\definecolor{hypo}{HTML}{FDB39E}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newtheorem{theoremeT}{Theorem}[section]
+\newtheorem{lemma}[dummy]{Lemma}
+\newtheorem{observation}[dummy]{Observation}
+\newtheorem{proposition}[dummy]{Proposition}
+% \newtheorem{definition}[dummy]{Definition}
+\newtheorem{claim}[dummy]{Claim}
+\newtheorem{fact}[dummy]{Fact}
+\newtheorem{assumption}[dummy]{Assumption}
+\newtheorem{algorithm}[dummy]{Algorithm}
+
+\newtheorem{problem}{Problem}[chapter]
+% \newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{darkbluenumex}
+\newtheorem{exampleT}{Example}[chapter]
+\theoremstyle{darkbluenumbox}
+\newtheorem{vocabulary}{Vocabulary}[chapter]
+\newtheorem{definitionT}{Definition}[section]
+\newtheorem{corollaryT}[dummy]{Corollary}
+\theoremstyle{darkbluenum}
+
+%----------------------------------------------------------------------------------------
+%	DEFINITION OF COLORED BOXES
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[framemethod=default,linewidth=2pt]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+% Theorem box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+backgroundcolor=darkblue!5,
+linecolor=darkblue,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=2cm,
+rightmargin=2cm,
+innerbottommargin=5pt,linewidth=2.5pt]{tBox}
+
+% Exercise box	  
+\newmdenv[skipabove=10pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=true,
+backgroundcolor=darkblue!10,
+linecolor=darkblue,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=2cm,
+rightmargin=2cm,
+linewidth=2pt]{eBox}	
+
+% Definition box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=darkblue,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt,linewidth=4pt]{dBox}	
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=eve,
+backgroundcolor=eve!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{cBox}
+
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=red,
+backgroundcolor=red!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{wBox}
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=orange,
+backgroundcolor=yellow!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{waitBox}
+
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=black,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{aliceBox}
+
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=black,
+backgroundcolor=hypo!10,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{hypoBox}
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=black,
+backgroundcolor=yellow!10,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{ideaBox}
+
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=green,
+backgroundcolor=green!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=2pt,
+innerbottommargin=2pt]{articleBox}
+
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
+\newenvironment{Algorithm}{\begin{tBox}\begin{algorithm}}{\end{algorithm}\end{tBox}}
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{darkblue}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+\newenvironment{definition}{\begin{eBox}\begin{definitionT}}{\end{definitionT}\end{eBox}}	
+\newenvironment{example}{\begin{exampleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exampleT}}		
+\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}	
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+\newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+\begin{list}{}{
+\leftmargin=10pt % Indentation on the left
+\rightmargin=10pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=darkblue!60,line width=1pt,circle,fill=darkblue!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{darkblue}{R}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+
+
+
+% Define the custom remark environment with cBox
+\newenvironment{eve}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/eve.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{cBox} % Start the existing cBox environment
+}{%
+    \end{cBox} % End the cBox environment
+}
+
+
+% Define the custom remark environment with cBox
+\newenvironment{warning}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/warning.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{wBox} % Start the existing cBox environment
+}{%
+    \end{wBox} % End the cBox environment
+}
+
+
+
+% Define the custom remark environment with cBox
+\newenvironment{wait}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/sablier.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{waitBox} % Start the existing cBox environment
+}{%
+    \end{waitBox} % End the cBox environment
+}
+
+% Define the custom remark environment with cBox
+\newenvironment{alice}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/alice.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{aliceBox} % Start the existing cBox environment
+}{%
+    \end{aliceBox} % End the cBox environment
+}
+
+
+\newenvironment{hypo}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/hypothesis.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{hypoBox} % Start the existing cBox environment
+}{%
+    \end{hypoBox} % End the cBox environment
+}
+
+\newenvironment{article}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=20pt]{figs/writing.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{articleBox} % Start the existing cBox environment
+}{%
+    \end{articleBox} % End the cBox environment
+}
+
+\newenvironment{idea}{%
+    \vspace*{-0.5cm}
+    \makebox[0pt]{%
+        \begin{tikzpicture}[overlay]
+            \node at (-15pt,-22pt) {
+                \includegraphics[width=40pt]{figs/idea.pdf} % Path to the custom icon
+            };
+        \end{tikzpicture}
+    }%
+
+    \begin{ideaBox} % Start the existing cBox environment
+}{%
+    \end{ideaBox} % End the cBox environment
+}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION NUMBERING IN THE MARGIN
+%----------------------------------------------------------------------------------------
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{darkblue}{\csname the#1\endcsname}\hspace{0.5em}}}                    
+\renewcommand{\section}{\@startsection{section}{1}{\z@}
+{-4ex \@plus -1ex \@minus -.4ex}
+{1ex \@plus.2ex }
+{\normalfont\Large\sffamily\bfseries}}
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+{-3ex \@plus -0.1ex \@minus -.4ex}
+{0.5ex \@plus.2ex }
+{\normalfont\large\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+{-2ex \@plus -0.1ex \@minus -.2ex}
+{.2ex \@plus.2ex }
+{\normalfont\normalsize\sffamily\bfseries\textcolor{bluebis}}}                        
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
+{-2ex \@plus-.2ex \@minus .2ex}
+{.1ex}
+{\normalfont\scriptsize\sffamily\bfseries}}
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+
+% For an unclear reason, the package should be loaded now and not later
+
+
+\usepackage{hyperref}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=true,breaklinks=true,linkcolor=black,citecolor=blue,urlcolor=darkblue,bookmarks=true,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER HEADINGS
+%----------------------------------------------------------------------------------------
+
+% The set-up below should be (sadly) manually adapted to the overall margin page septup controlled by the geometry package loaded in the main.tex document. It is possible to implement below the dimensions used in the goemetry package (top,bottom,left,right)... TO BE DONE
+
+
+
+\newcommand{\thechapterimage}{}
+\newcommand{\chapterimage}[1]{\renewcommand{\thechapterimage}{#1}}
+
+% \renewcommand{\mtctitle}{}
+% \setlength{\mtcindent}{0pt}
+% \setlength{\mtcfont}{\tiny}
+
+\renewcommand{\mtcfont}{\fontsize{100}{100}\selectfont} 
+
+% Numbered chapters with mini tableofcontents
+% \def\thechapter{\Roman{chapter}}
+\def\@makechapterhead#1{
+\thispagestyle{empty}
+{\normalfont\sffamily
+\ifnum \c@secnumdepth >\m@ne
+\if@mainmatter
+\startcontents
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commenting the 3 lines below removes the small contents box in the chapter heading
+\mtcsettitle{minitoc}{}
+% \mtcsetdepth{subsection}
+\nomtcrule % Supprime les barres encadrant la minitoc
+\fill[color=darkblue!10!white,opacity=.6] (30cm,40cm) rectangle (11cm,-40cm);
+\node[anchor=north west] at (8.7cm,-1cm) {\parbox[t][1cm][t]{13cm}{\minitoc }};
+\draw[anchor=west] (14.85cm,-2cm) node [rounded corners=5pt,fill=darkblue!20!white,text opacity=1,draw=darkblue
+,draw opacity=1,line width=2pt,fill opacity=2,inner sep=10pt]
+{\fontsize{140}{60}\selectfont \scshape\textcolor{dark}{\thechapter \makebox[0.05cm]{}}};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}};
+\end{tikzpicture}} 
+\parbox[c][5cm][c]{9cm}{\vspace*{-3.5cm} \centering \fontsize{30}{30}\selectfont #1}
+
+
+}
+
+% \newgeometry{left=3cm,right=3cm,bottom=0.5in,top=1in}
+
+% Unnumbered chapters without mini tableofcontents (could be added though) 
+\def\@makeschapterhead#1{
+\thispagestyle{empty}
+{\normalfont\sffamily
+\ifnum \c@secnumdepth >\m@ne
+\if@mainmatter
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {};
+\draw[anchor=west] (1cm,-2cm) node [rounded corners=20pt,fill=darkblue!0!white,fill opacity=0,inner sep=12pt,text opacity=1,
+draw=dark,draw opacity=0,line width=1.5pt]{\HUGE\sf\textcolor{dark}{\textbf{#1}\strut\makebox[22cm]{}}};
+\end{tikzpicture}};
+\end{tikzpicture}}
+\par\vspace*{30\p@}
+\fi
+\fi
+}
+\makeatother
+
+% \newcommand{\ZeroRoman}[1]{% 0 + \Roman
+%   \ifcase\value{#1}\relax 0\else% Chapter 0
+%   \Roman{#1}\fi}% All other chapters
+% \renewcommand{\thechapter}{\ZeroRoman{chapter}}
+% To start chapter numbering from 0

@@ -1,0 +1,340 @@
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn,openany]{book} % Default font size and left-justified equations
+\usepackage[default, regular]{sourcesanspro}
+\usepackage[top=3cm,bottom=0.1cm,left=1.7cm,right=1.7cm,headsep=15pt,letterpaper]{geometry} % Page margins
+
+\usepackage{pifont}
+\usepackage{adjustbox}
+\usepackage[english]{minitoc}
+\usepackage{mathrsfs}
+\usepackage{parskip}
+\usepackage{tablefootnote}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+
+\usepackage{fix-cm}    
+
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{30}{40}}
+\makeatother
+
+\usepackage{enumitem}
+\definecolor{ocre}{RGB}{52,177,201} % Define the orange color used for highlighting throughout the book
+\renewcommand{\mtifont}{\large\sffamily}
+\renewcommand{\mtcfont}{\small\sffamily}
+\renewcommand{\mtcSfont}{\small\sffamily}
+\renewcommand{\mtcSSfont}{\small\sffamily}
+\renewcommand{\mtcSSSfont}{\small\sffamily}
+\usepackage{footnote}
+
+\usepackage{tablefootnote}
+\usepackage{bbm}
+\usepackage{xcolor,colortbl}
+\definecolor{green}{rgb}{0.0, 0.5, 0.0}
+\definecolor{lightgreen}{HTML}{8FF1B1}
+\definecolor{lightred}{HTML}{FFAEAE}
+\definecolor{lightyellow}{HTML}{F8FFC3}
+
+\setcounter{minitocdepth}{5}
+% % Font Settings
+% \usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+% \usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+% \usepackage[utf8]{inputenc} % Required for including letters with accents
+% \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+\usepackage{tcolorbox}
+\usepackage{svg}
+\usepackage{lipsum}
+% \newtcolorbox{mytitle}{colback=blue!10!white,colframe=blue!10!black}
+% \usepackage{sansmath}
+
+% \SetSymbolFont{largesymbols}{sans}{OMX}{iwona}{m}{n}
+% \SetMathAlphabet{\mathsfsl}{sans}{\sansmathencoding}{\sfdefault}{m}{n}
+\usepackage{array}
+\usepackage{titletoc}
+\usepackage{bookmark}
+% Bibliography
+
+\usepackage[backend=bibtex,sorting=none,natbib=true]{biblatex}
+
+\setlength\bibitemsep{0.5\baselineskip}
+
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\AtBeginBibliography{\vspace*{0.5cm}}
+
+
+% \usepackage{hyperref}
+% \DeclareFieldFormat{title}{%
+%   \iffieldundef{url}
+%     {\textbf{#1}}
+%     {\href{\thefield{url}}{\textbf{#1}}}%
+% }
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{subcaption}  % for subfigures
+\usepackage{multirow}  % For multi-row cells if needed
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\def\R{\mathbb{R}}
+\newcommand{\cvx}{convex}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+
+\definecolor{source}{HTML}{154360}
+\definecolor{target}{HTML}{17A589}
+\definecolor{lighttarget}{HTML}{C3FFF3}
+\definecolor{lightsource}{HTML}{CEEAFD}
+\definecolor{tada}{HTML}{5BFF94}
+
+
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries\color{target}}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}%\makeatletter
+
+% Define the \shead command
+\newcommand{\shead}[1]{%
+\renewcommand\theadfont{\bfseries\color{source}}
+\thead{#1}
+}
+
+\newcommand{\blackhead}[1]{%
+\renewcommand\theadfont{\bfseries\color{black}}
+\thead{#1}
+}
+
+\newcommand{\highlight}[1]{
+    \cellcolor{lightgreen}{\textbf{#1}}
+}
+
+\newcommand{\tableref}[1]{
+\begingroup
+    \hspace*{-0.1cm}
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Table~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.1cm}
+}
+
+\newcommand{\sectionref}[1]{
+\begingroup
+    \hspace*{-0.15cm}
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Section~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\equationref}[1]{
+\begingroup
+    \hspace*{-0.15cm}
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Equation~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+
+\newcommand{\figureref}[1]{
+\begingroup
+\hspace*{-0.15cm}
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Figure~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\chapterref}[1]{
+\begingroup
+\hspace*{-0.15cm}
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Chapter~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\theoremref}[1]{
+    \hspace*{-0.15cm}
+\begingroup
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Theorem~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\algorithmref}[1]{
+    \hspace*{-0.15cm}
+\begingroup
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Algorithm~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\definitionref}[1]{
+    \hspace*{-0.15cm}
+\begingroup
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Definition~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\appendixref}[1]{
+    \hspace*{-0.15cm}
+\begingroup
+    \hypersetup{linkcolor=bluebis} 
+    \textbf{\hyperref[#1]{Appendix~\ref*{#1}}}
+\endgroup 
+\hspace*{-0.15cm}
+}
+
+\newcommand{\source}[1]{
+\textcolor{source}{\textbf{#1}}
+}
+
+\newcommand{\target}[1]{
+\textcolor{target}{\textbf{#1}}
+}
+
+
+
+\captionsetup[figure]{labelformat=simple, labelsep=colon, textfont={bf}, labelfont={color=bluebis}} 
+
+\captionsetup[table]{labelformat=simple, labelsep=colon, textfont={bf}, labelfont={color=bluebis}} 
+
+%----------------------------------------------------------------------------------------
+%	Definitions of new commands
+%----------------------------------------------------------------------------------------
+
+% \usepackage[justification=centering]{caption}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\usepackage{mwe}
+
+\begin{document}
+
+% \sansmath
+
+% \onehalfspacing
+\dominitoc
+\doparttoc
+
+%===============================================
+% *** TITLE, AUTHOR AND DATE *** %
+
+\begin{titlepage}
+    \begin{center}
+        {\Huge\textbf{UNIVERSITY}} \\
+        \vspace{0.5cm}
+        \Large\textbf{PhD THESIS} \\
+        \vspace{0.5cm}
+        \large{Presented in order to obtain the degree of} \\
+        \vspace{0.5cm}
+        \Huge\textbf{PhD} \\
+        \vspace{0.5cm}
+        \Large{En} \\
+        \vspace{0.5cm}
+        \large{\textbf{Speciality}: XXX} \\
+        \vspace{0.5cm}
+        \Large{By} \\
+        \vspace{0.5cm}
+        \Huge\textbf{Author} \\
+        \vspace{0.5cm}
+        \large{\textit{PhD granted by Centrale Lille}} \\
+        \vspace{0.5cm}
+        \large{Thesis Title} \\
+        \vspace{0.1cm}
+        \Large{Native Title} \\
+        \vspace{0.1cm}
+        \Large{\textit{English Title}} \\
+        \vspace{0.4cm}
+        \large{Thesis defended the [date] in front of the jury :} \\
+        \vspace{0.5cm}
+        \hspace*{0.2cm}
+        \begin{tabular}{lll}
+            \large{\textbf{Role 1}} & \large{Name 1} & Institution 1\\
+            \large{\textbf{Role 2}} & \large{Name 2} & Institution 2\\
+            \large{\textbf{Role 3}} & \large{Name 3} & Institution 3\\
+        \end{tabular}
+        \vspace{0.5cm} \\
+        \large{PhD prepared in the lab XXX} \\
+        \vspace{0.2cm}
+        \large{Doctoral School} \\
+        \vspace{1cm}
+        \hspace*{-0.2cm}
+        \includegraphics[keepaspectratio,width=0.3\textwidth]{example-image-a}
+    \end{center}
+\end{titlepage}
+
+\date{\today}
+
+% \begin{mdframed}
+
+% \newgeometry{left=1cm,right=7cm,bottom=0.5in,top=1in}
+\newgeometry{left=1.5cm,right=1.5cm,bottom=0.5in,top=0.7in}
+
+\fancyhfoffset[E,O]{0pt}
+
+
+% \end{mdframed}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+
+% \textit{\large This thesis precisely deals with out-of-distribution generalization for forensic practitioners focusing on two classical tasks in Digital Image Forensics : Forgery Detection and Steganalysis.}
+% \chapterimage{head1.jpeg} % Table of contents heading image
+\newcommand\chap[1]{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+    \markboth{#1}{#1}}
+
+\input{ak.tex}
+
+\pagestyle{empty} % No headers
+\renewcommand{\contentsname}{Table of contents}
+\tableofcontents % Print the table of contents itself
+
+\input{notations.tex}
+
+\listoffigures
+\listoftables
+%\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+% \input{ak.tex}
+\adjustmtc
+\input{chapter1.tex}
+\input{chapter2.tex}
+\appendix
+\input{appendix.tex}
+\printbibliography
+\input{abstract.tex}
+
+\end{document}

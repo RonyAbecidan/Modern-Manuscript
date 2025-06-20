@@ -1,0 +1,97 @@
+%PDF-1.4
+%Çì¢
+
+% Document Catalog
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+% Page Tree
+2 0 obj
+<<
+  /Type /Pages
+  /Count 1
+  /Kids [3 0 R]
+>>
+endobj
+
+% Only Page
+3 0 obj
+<<
+  /Type /Page
+  /MediaBox [0 0 500 500]
+  /Parent 2 0 R
+  /Contents 7 0 R
+  /Resources <<
+    /ProcSet [/PDF]
+    /ExtGState 5 0 R
+  >>
+>>
+endobj
+
+% ExtGState
+4 0 obj
+<<
+  /Type /ExtGState
+  /OPM 1
+>>
+endobj
+
+% R7
+5 0 obj
+<<
+  /R7 4 0 R
+>>
+endobj
+
+% Info
+6 0 obj
+<</Producer (Vectorizer.AI)>>
+endobj
+
+% Contents Stream: Compression: Deflate
+7 0 obj
+<<
+  /Length 8 0 R
+  /Filter /FlateDecode
+>>
+stream
+xœU’KÒ!„÷œ‚D… 8ÏT%YØ›Ü‘–æ·í*Ãg=h1µøÔøşâ{ííì®wi´d!ÄmÄ¯qı÷§HÇ®êd\ßEÚ Ñ:&µU_E«ª‘µ*n¤z`)ùÚ‰W1Äæ<}^År­wR®æ!Õº“õjÊQ´é*è±ôà«hH>ˆãçéò%õ‚òLTƒ„Òû¢Æ7{•1Èƒ„f-rÈƒvÜµõ
+%°Aœ³RuIâRZ+s³(şvÃ2B­ Ú£r‘xe,šš°él“ƒ4¨¥|Ÿ4–Yæv<Hå>i®[!ƒpêánš$©¡Ãˆ–Œb‘‘4¡×Vİ„\srù‰â!ü©TäÚG_˜îS²{*Zxaáı£W}n2½oêI¡şñö„Û%¼œûã àÂöá/›ã¾ÀQ~^&ôÉÇ»©’¶çUŸ	@û¯y¸ı…g:=&óı°cpc",§iH8‘µ|(Îé9Î;
+_LÊMwßĞŸlM¢Å®4V2?}7!÷>õDoE§òKïUş–ßå?¼»á
+endstream
+endobj
+
+% Length of Contents Stream
+8 0 obj
+413
+endobj
+
+% Xref lists byte offsets to each obj
+xref
+0 9
+0000000000 65535 f
+0000000035 00000 n
+0000000101 00000 n
+0000000177 00000 n
+0000000347 00000 n
+0000000402 00000 n
+0000000443 00000 n
+0000000529 00000 n
+0000001049 00000 n
+
+% Trailer identifies number of objs, plus Root and Info objs
+trailer
+<<
+  /Size 9
+  /Root 1 0 R
+  /Info 6 0 R
+>>
+
+% Startxref tells reader where to find the xref table of object locations
+startxref
+1107
+%%EOF
